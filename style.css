@@ -1,0 +1,16 @@
+.stream {
+    padding: 1em;
+    margin-bottom: 0em;
+    float: left;
+    display: block;
+    width: 320px;
+    height: 320px;
+}
+
+.total {
+    float: right;
+}
+
+.status-split {
+    margin: 4px 0;
+}
