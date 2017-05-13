@@ -9,7 +9,7 @@ $games = get_request($base_url, $client_id, $game_url);
     </header>
     <body>
         <div class="nav">
-            <form action="http://localhost:8081" method="get">
+            <form action="" method="get">
                 Limit (1-100): <input type="number" min="1" max="100" value="25" name="limit">
                 Offset (0-): <input type="number" min="0" value="0" name="offset">
                 Game: <input type="text" autocomplete="on" name="game" list="games">
