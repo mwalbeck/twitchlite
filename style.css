@@ -1,3 +1,17 @@
+body {
+    background: #222;
+    color: #FFF
+}
+
+.nav {
+    display: inline-block;
+    width: 100%;
+}
+
+.input {
+    float: left;
+}
+
 .stream {
     padding: 1em;
     margin-bottom: 0em;
