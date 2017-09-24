@@ -18,7 +18,7 @@ $games = get_request($base_url, $game_url, $client_id);
                 Offset (0-): <input type="number" min="0" value="<?php echo isset($_GET['offset']) ? $_GET['offset'] : "0"; ?>" name="offset">
                 Game: <input type="text" autocomplete="on" name="game" value="<?php echo isset($_GET['game']) ? $_GET['game'] : "";?>" list="games">
                 <?php if ($oauth_token) : ?>
-                    Only Followed: <input type="checkbox" name="only_followed" value="1" <?php echo isset($_GET['only_followed']) ? "checked" : ""; ?>>
+                    Only followed: <input type="checkbox" name="only_followed" value="1" <?php echo isset($_GET['only_followed']) ? "checked" : ""; ?>>
                 <?php endif; ?>
                 <input type="submit" value="Submit">
             </form>
