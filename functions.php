@@ -1,6 +1,6 @@
 <?php
 $base_url = "https://api.twitch.tv/kraken";
-$client_id = "";
+$client_id = "tfdaga4350ved4acxim5958z1qcr8y";
 $oauth_token = "";
 $stream_url = "/streams";
 $followed_url = "/streams/followed";
