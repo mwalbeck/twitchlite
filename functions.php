@@ -1,6 +1,7 @@
 <?php
 $base_url = "https://api.twitch.tv/kraken";
 $client_id = "";
+$oauth_token = "";
 $stream_url = "/streams";
 $game_url = "/games/top";
 
