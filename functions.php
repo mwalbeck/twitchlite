@@ -6,7 +6,7 @@ $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
 $oauth_token = "";
 $only_followed_default = false;
-$get_top_games = true;
+$get_top_games = false;
 
 function get_request($base_url, $url_extend, $client_id, $params = [], $oauth = "") {
     $request_url = create_url($base_url, $url_extend, $params);
