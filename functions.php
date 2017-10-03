@@ -1,30 +1,17 @@
 <?php
 $base_url = "https://api.twitch.tv/kraken";
-$client_id = "tfdaga4350ved4acxim5958z1qcr8y";
-$oauth_token = "";
 $stream_url = "/streams";
 $followed_url = "/streams/followed";
 $game_url = "/games/top";
+$client_id = "tfdaga4350ved4acxim5958z1qcr8y";
+$oauth_token = "";
+$only_followed_default = false;
+$get_top_games = false;
 
 function get_request($base_url, $url_extend, $client_id, $params = [], $oauth = "") {
     $request_url = create_url($base_url, $url_extend, $params);
     $json = curl_get($request_url, $client_id, $oauth);
     return to_array($json);
-}
-
-function curl_get($request_url, $client_id, $oauth = "") {
-    $header_array[] = 'Accept: application/vnd.twitchtv.v5+json';
-    $header_array[] = 'Client-ID: ' . $client_id;
-    if ($oauth) {
-        $header_array[] = 'Authorization: OAuth ' . $oauth;
-    }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, $request_url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header_array);
-    $content = curl_exec($ch);
-    curl_close($ch);
-    return $content;
 }
 
 function create_url($base_url, $url_extend, $params = []) {
@@ -39,10 +26,6 @@ function param_to_string($params) {
         $string .= "&" . $param . "=" . $value;
     }
     return $string;
-}
-
-function to_array($json) {
-    return json_decode($json, true);
 }
 
 function filter_params($params) {
@@ -67,4 +50,23 @@ function filter_params($params) {
         }
     }
     return $new_params;
+}
+
+function curl_get($request_url, $client_id, $oauth = "") {
+    $header_array[] = 'Accept: application/vnd.twitchtv.v5+json';
+    $header_array[] = 'Client-ID: ' . $client_id;
+    if ($oauth) {
+        $header_array[] = 'Authorization: OAuth ' . $oauth;
+    }
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $request_url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header_array);
+    $content = curl_exec($ch);
+    curl_close($ch);
+    return $content;
+}
+
+function to_array($json) {
+    return json_decode($json, true);
 }
