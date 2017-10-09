@@ -33,7 +33,7 @@ function filter_params($params) {
     foreach ($params as $param => $value) {
         switch ($param) {
             case "limit":
-                if (is_numeric($value) && ($value > 0) && ($value < 100)) {
+                if (is_numeric($value) && ($value > 0) && ($value < 101)) {
                     $new_params[$param] = $value;
                 }
                 continue;
