@@ -6,13 +6,13 @@ if ($only_followed_default && !isset($_GET["only_followed_hidden"])) {
 }
 
 if (isset($_GET["only_followed"])) {
-    $content = get_request($base_url, $followed_url, $client_id, $_GET, $oauth_token);
+    $content = getRequest($base_url, $followed_url, $client_id, $_GET, $oauth_token);
 } else {
-    $content = get_request($base_url, $stream_url, $client_id, $_GET);
+    $content = getRequest($base_url, $stream_url, $client_id, $_GET);
 }
 
 if ($get_top_games) {
-    $games = get_request($base_url, $game_url, $client_id);
+    $games = getRequest($base_url, $game_url, $client_id);
 }
 ?>
 <html>
@@ -35,7 +35,7 @@ if ($get_top_games) {
             <span class="total">Total Stream: <?php echo $content["_total"]; ?></span>
             <?php if ($get_top_games) : ?>
                 <datalist id="games">
-                    <?php foreach($games["top"] as $game) : ?>
+                    <?php foreach ($games["top"] as $game) : ?>
                         <option value="<?php echo $game["game"]["name"]; ?>">
                     <?php endforeach; ?>
                 </datalist>
@@ -43,7 +43,7 @@ if ($get_top_games) {
         </div>
         <div id="content">
             <div class="container">
-                <?php foreach($content["streams"] as $stream) : ?>
+                <?php foreach ($content["streams"] as $stream) : ?>
                     <div class="stream">
                         <a href="<?php echo $stream["channel"]["url"]; ?>"><img src="<?php echo $stream["preview"]["medium"]; ?>"></a><br>
                         <span class="user">User: <?php echo $stream["channel"]["display_name"]; ?></span><br>

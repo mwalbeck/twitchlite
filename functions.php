@@ -8,19 +8,22 @@ $oauth_token = "";
 $only_followed_default = false;
 $get_top_games = false;
 
-function get_request($base_url, $url_extend, $client_id, $params = [], $oauth = "") {
-    $request_url = create_url($base_url, $url_extend, $params);
-    $json = curl_get($request_url, $client_id, $oauth);
-    return to_array($json);
+function getRequest($base_url, $url_extend, $client_id, $params = [], $oauth = "")
+{
+    $request_url = createUrl($base_url, $url_extend, $params);
+    $json = curlGet($request_url, $client_id, $oauth);
+    return toArray($json);
 }
 
-function create_url($base_url, $url_extend, $params = []) {
-    $param_string = param_to_string($params);
+function createUrl($base_url, $url_extend, $params = [])
+{
+    $param_string = paramToString($params);
     return $base_url . $url_extend . "?" . $param_string;
 }
 
-function param_to_string($params) {
-    $filtered_params = filter_params($params);
+function paramToString($params)
+{
+    $filtered_params = filterParams($params);
     $string = "";
     foreach ($filtered_params as $param => $value) {
         $string .= "&" . $param . "=" . $value;
@@ -28,7 +31,8 @@ function param_to_string($params) {
     return $string;
 }
 
-function filter_params($params) {
+function filterParams($params)
+{
     $new_params = [];
     foreach ($params as $param => $value) {
         switch ($param) {
@@ -52,7 +56,8 @@ function filter_params($params) {
     return $new_params;
 }
 
-function curl_get($request_url, $client_id, $oauth = "") {
+function curlGet($request_url, $client_id, $oauth = "")
+{
     $header_array[] = 'Accept: application/vnd.twitchtv.v5+json';
     $header_array[] = 'Client-ID: ' . $client_id;
     if ($oauth) {
@@ -67,6 +72,7 @@ function curl_get($request_url, $client_id, $oauth = "") {
     return $content;
 }
 
-function to_array($json) {
+function toArray($json)
+{
     return json_decode($json, true);
 }
