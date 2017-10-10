@@ -5,8 +5,12 @@ if (file_exists("config.php")) {
     include 'config.php';
 }
 
-if (isset($only_followed_default) && $only_followed_default === true && !isset($_GET["only_followed_hidden"])) {
+if (!isset($_GET["only_followed_hidden"]) && isset($only_followed_default) && $only_followed_default === true) {
     $_GET["only_followed"] = "true";
+}
+
+if (!isset($_GET['limit']) && isset($default_limit)) {
+    $_GET['limit'] = $default_limit;
 }
 
 if (isset($_GET["only_followed"])) {
