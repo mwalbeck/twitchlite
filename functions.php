@@ -4,9 +4,6 @@ $stream_url = "/streams";
 $followed_url = "/streams/followed";
 $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
-$oauth_token = "";
-$only_followed_default = false;
-$get_top_games = false;
 
 function getRequest($base_url, $url_extend, $client_id, $params = [], $oauth = "")
 {

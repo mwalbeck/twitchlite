@@ -1,7 +1,11 @@
 <?php
-include 'functions.php';
+require 'functions.php';
 
-if ($only_followed_default && !isset($_GET["only_followed_hidden"])) {
+if (file_exists("config.php")) {
+    include 'config.php';
+}
+
+if (isset($only_followed_default) && $only_followed_default === true && !isset($_GET["only_followed_hidden"])) {
     $_GET["only_followed"] = "true";
 }
 
@@ -11,7 +15,7 @@ if (isset($_GET["only_followed"])) {
     $content = getRequest($base_url, $stream_url, $client_id, $_GET);
 }
 
-if ($get_top_games) {
+if (isset($get_top_games) && $get_top_games === true) {
     $games = getRequest($base_url, $game_url, $client_id);
 }
 ?>
@@ -26,14 +30,14 @@ if ($get_top_games) {
                 Limit (1-100): <input type="number" min="1" max="100" value="<?php echo isset($_GET['limit']) ? $_GET['limit'] : "25"; ?>" name="limit">
                 Offset (0-): <input type="number" min="0" value="<?php echo isset($_GET['offset']) ? $_GET['offset'] : "0"; ?>" name="offset">
                 Game: <input type="text" autocomplete="on" name="game" value="<?php echo isset($_GET['game']) ? $_GET['game'] : "";?>" list="games">
-                <?php if ($oauth_token) : ?>
+                <?php if (isset($oauth_token) && !empty($oauth_token)) : ?>
                     <input type="hidden" name="only_followed_hidden" value="0">
                     Only followed: <input type="checkbox" name="only_followed" value="1" <?php echo isset($_GET['only_followed']) ? "checked" : ""; ?>>
                 <?php endif; ?>
                 <input type="submit" value="Submit">
             </form>
             <span class="total">Total Stream: <?php echo $content["_total"]; ?></span>
-            <?php if ($get_top_games) : ?>
+            <?php if (isset($get_top_games) && $get_top_games === true) : ?>
                 <datalist id="games">
                     <?php foreach ($games["top"] as $game) : ?>
                         <option value="<?php echo $game["game"]["name"]; ?>">
