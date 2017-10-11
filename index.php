@@ -31,7 +31,7 @@ if (file_exists("config.php")) {
                         <?php echo $_GET['offset'] === "0" ? "disabled" : ""; ?> >Prev</button>
                 <button type="submit" name="offset" 
                     value="<?php echo getNextPageOffset($_GET['limit'], $_GET['offset'], $content["_total"]); ?>" 
-                        <?php echo $content["_total"] - $_GET['limit'] === $_GET['offset'] ? "disabled" : ""; ?> >Next</button>
+                        <?php echo $content["_total"] - $_GET['limit'] == $_GET['offset'] ? "disabled" : ""; ?> >Next</button>
                 <input type="hidden" name="game" value="<?php echo $_GET['game'];?>">
             </form>
             <?php if (isset($get_top_games) && $get_top_games === true) : ?>
