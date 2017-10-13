@@ -29,6 +29,7 @@ if (file_exists("config.php")) {
                 <button type="submit" name="offset" 
                     value="<?php echo getPrevPageOffset($_GET['limit'], $_GET['offset']); ?>" 
                         <?php echo $_GET['offset'] === "0" ? "disabled" : ""; ?> >Prev</button>
+                <span>Page <?php echo floor($_GET['offset'] / $_GET['limit']) + 1; ?> </span>
                 <button type="submit" name="offset" 
                     value="<?php echo getNextPageOffset($_GET['limit'], $_GET['offset'], $content["_total"]); ?>" 
                         <?php echo $content["_total"] - $_GET['limit'] == $_GET['offset'] ? "disabled" : ""; ?> >Next</button>
