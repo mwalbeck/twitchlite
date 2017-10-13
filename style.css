@@ -12,6 +12,11 @@ body {
     float: left;
 }
 
+.input-prev-next {
+    float: right;
+    padding: 0 1em;
+}
+
 .stream {
     padding: 1em;
     margin-bottom: 0em;
@@ -23,6 +28,7 @@ body {
 
 .total {
     float: right;
+    padding-top: 0.4em;
 }
 
 .status-split {

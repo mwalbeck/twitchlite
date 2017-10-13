@@ -1,12 +1,22 @@
 <?php
+
+// Base Variables
+
 $base_url = "https://api.twitch.tv/kraken";
 $stream_url = "/streams";
 $followed_url = "/streams/followed";
 $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
 
-function getRequest($base_url, $url_extend, $client_id, $params = [], $oauth = "")
-{
+// Functions
+
+function getRequest(
+    $base_url,
+    $url_extend,
+    $client_id,
+    $params = [],
+    $oauth = ""
+) {
     $request_url = createUrl($base_url, $url_extend, $params);
     $json = curlGet($request_url, $client_id, $oauth);
     return toArray($json);
@@ -72,4 +82,63 @@ function curlGet($request_url, $client_id, $oauth = "")
 function toArray($json)
 {
     return json_decode($json, true);
+}
+
+function getPrevPageOffset($limit, $offset)
+{
+    if ($limit < $offset) {
+        return $offset - $limit;
+    }
+
+    return "0";
+}
+
+function getNextPageOffset($limit, $offset, $total)
+{
+    if ($offset + $limit < $total) {
+        return $offset + $limit;
+    }
+
+    return $total - $limit;
+}
+
+// Logic
+
+if (!isset($_GET["only_followed_hidden"])
+    && isset($only_followed_default)
+    && $only_followed_default === true
+) {
+    $_GET["only_followed"] = "true";
+}
+
+if (!isset($_GET['limit']) && isset($default_limit)) {
+    $_GET['limit'] = $default_limit;
+}
+
+if (isset($_GET["only_followed"])) {
+    $content = getRequest(
+                    $base_url,
+                    $followed_url,
+                    $client_id,
+                    $_GET,
+                    $oauth_token
+               );
+} else {
+    $content = getRequest($base_url, $stream_url, $client_id, $_GET);
+}
+
+if (isset($get_top_games) && $get_top_games === true) {
+    $games = getRequest($base_url, $game_url, $client_id);
+}
+
+if (!isset($_GET['limit'])) {
+    $_GET['limit'] = "25";
+}
+
+if (!isset($_GET['offset'])) {
+    $_GET['offset'] = "0";
+}
+
+if (!isset($_GET['game'])) {
+    $_GET['game'] = "";
 }
