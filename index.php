@@ -1,9 +1,5 @@
 <?php
 require 'logic.php';
-
-if (file_exists("config.php")) {
-    include 'config.php';
-}
 ?>
 <html>
     <header>

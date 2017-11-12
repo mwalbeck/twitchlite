@@ -8,6 +8,12 @@ $followed_url = "/streams/followed";
 $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
 
+// Config Options
+
+if (file_exists("config.php")) {
+    include 'config.php';
+}
+
 // Functions
 
 function getRequest(
