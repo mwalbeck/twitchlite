@@ -19,9 +19,9 @@ For easy configuration place a config.php file in the root directory. Below you 
 ```
 <?php
 $oauth_token = "";
-$only_followed_default = "false"; (true|false)
+$only_followed_default = false; (true|false)
 $default_limit = "25"; (1-100)
-$get_top_games = "false"; (true|false)
+$get_top_games = false; (true|false)
 ```
 
 if you wish to change one of the variables in logic.php you can simply override it by placing a variable with the same name in config.php with your desired value.
