@@ -47,9 +47,9 @@ require 'logic.php';
                             <img src="<?php echo $stream["preview"]["medium"]; ?>">
                         </a>
                         <br>
-                        <span class="user">User: <?php echo $stream["channel"]["display_name"]; ?></span><br>
-                        <span class="game">Game: <?php echo $stream["game"]; ?></span><br>
-                        <span class="viewers">Viewers: <?php echo $stream["viewers"]; ?></span><br>
+                        <span class="user"><strong>User:</strong> <?php echo $stream["channel"]["display_name"]; ?></span><br>
+                        <span class="game"><strong>Game:</strong> <?php echo $stream["game"]; ?></span><br>
+                        <span class="viewers"><strong>Viewers:</strong> <?php echo $stream["viewers"]; ?></span><br>
                         <hr class="status-split">
                         <span class="status"><?php echo $stream["channel"]["status"]; ?></span><br>
                     </div>
