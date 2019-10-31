@@ -59,4 +59,3 @@ require 'logic.php';
         </div>
     </body>
 </html>
-

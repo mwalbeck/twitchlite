@@ -7,6 +7,7 @@ $stream_url = "/streams";
 $followed_url = "/streams/followed";
 $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
+$top_games_limit = "10";
 
 // Config Options
 
@@ -134,7 +135,7 @@ if (isset($_GET["only_followed"])) {
 }
 
 if (isset($get_top_games) && $get_top_games === true) {
-    $games = getRequest($base_url, $game_url, $client_id);
+    $games = getRequest($base_url, $game_url, $client_id, ["limit" => $top_games_limit]);
 }
 
 if (!isset($_GET['limit'])) {
