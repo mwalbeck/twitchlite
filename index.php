@@ -42,6 +42,7 @@ require 'logic.php';
         <div id="content">
             <div class="container">
                 <?php foreach ($content["streams"] as $stream) : ?>
+                    <?php if (isset($_GET['only_followed']) && isset($_GET['only_followed']) && !empty($_GET['game']) && $_GET['game'] !== $stream["game"]) { continue; } ?>
                     <div class="stream">
                         <a href="<?php echo $stream["channel"]["url"]; ?>">
                             <img src="<?php echo $stream["preview"]["medium"]; ?>">
