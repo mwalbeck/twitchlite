@@ -13,9 +13,9 @@ require 'logic.php';
                 Offset (0-900): <input type="number" min="0" max="900" value="<?php echo $_GET['offset']; ?>" name="offset">
                 Game: <input type="text" autocomplete="on" name="game" value="<?php echo $_GET['game']; ?>" list="games">
                 <?php if (isset($oauth_token) && !empty($oauth_token)) : ?>
-                    <input type="hidden" name="only_followed_hidden" value="0">
                     Only followed: <input type="checkbox" name="only_followed" value="1" 
-                        <?php echo isset($_GET['only_followed']) ? "checked" : ""; ?> >
+                        <?php echo $_GET['only_followed'] === "1" ? "checked" : ""; ?> >
+                    <input type="hidden" name="ofh" value="0">
                 <?php endif; ?>
                 <input type="submit" value="Submit">
             </form>
@@ -28,7 +28,8 @@ require 'logic.php';
                 <button type="submit" name="offset"
                     value="<?php echo getNextPageOffset($_GET['limit'], $_GET['offset'], $total); ?>" 
                         <?php echo $total <= $_GET['offset'] ? "disabled" : ""; ?>>Next</button>
-                <input type="hidden" name="game" value="<?php echo $_GET['game'];?>">
+                <input type="hidden" name="game" value="<?php echo $_GET['game']; ?>">
+                <input type="hidden" name="only_followed" value="<?php echo $_GET['only_followed'] ? "1" : "0"; ?>">
             </form>
             <?php if (isset($get_top_games) && $get_top_games === true) : ?>
                 <datalist id="games">

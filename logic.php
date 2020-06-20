@@ -112,18 +112,21 @@ function getNextPageOffset($limit, $offset, $total)
 
 // Logic
 
-if (!isset($_GET["only_followed_hidden"])
+if (!isset($_GET["only_followed"])
+    && !isset($_GET["ofh"])
     && isset($only_followed_default)
     && $only_followed_default === true
 ) {
-    $_GET["only_followed"] = "true";
+    $_GET["only_followed"] = "1";
+} else if (!isset($_GET["only_followed"]) && !isset($_GET["ofh"])) {
+    $_GET["only_followed"] = "0";
 }
 
 if (!isset($_GET['limit']) && isset($default_limit)) {
     $_GET['limit'] = $default_limit;
 }
 
-if (isset($_GET["only_followed"])) {
+if ($_GET["only_followed"] === "1") {
     $content = getRequest(
                     $base_url,
                     $followed_url,
