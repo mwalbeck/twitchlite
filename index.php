@@ -50,6 +50,9 @@ require 'logic.php';
                         <span class="user"><strong>User:</strong> <?php echo $stream["channel"]["display_name"]; ?></span><br>
                         <span class="game"><strong>Game:</strong> <?php echo $stream["game"]; ?></span><br>
                         <span class="viewers"><strong>Viewers:</strong> <?php echo $stream["viewers"]; ?></span><br>
+                        <a href="<?php echo "https://twitch.tv/popout/" . $stream["channel"]["name"] . "/chat" ?>">
+                            <span class="chat">Link to chat</span>
+                        </a>
                         <hr class="status-split">
                         <span class="status"><?php echo $stream["channel"]["status"]; ?></span><br>
                     </div>

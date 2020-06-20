@@ -3,6 +3,11 @@ body {
     color: #FFF
 }
 
+a,
+a:visited {
+    color: #625cff;
+}
+
 .nav {
     display: inline-block;
     width: 100%;
