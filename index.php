@@ -10,7 +10,7 @@ require 'logic.php';
         <div class="nav">
             <form class="input" method="get">
                 Limit (1-100): <input type="number" min="1" max="100" value="<?php echo $_GET['limit']; ?>" name="limit">
-                Offset (0-): <input type="number" min="0" value="<?php echo $_GET['offset']; ?>" name="offset">
+                Offset (0-900): <input type="number" min="0" max="900" value="<?php echo $_GET['offset']; ?>" name="offset">
                 Game: <input type="text" autocomplete="on" name="game" value="<?php echo $_GET['game']; ?>" list="games">
                 <?php if (isset($oauth_token) && !empty($oauth_token)) : ?>
                     <input type="hidden" name="only_followed_hidden" value="0">
@@ -19,16 +19,15 @@ require 'logic.php';
                 <?php endif; ?>
                 <input type="submit" value="Submit">
             </form>
-            <span class="total">Total Stream: <?php echo $content["_total"]; ?></span>
             <form class="input-prev-next" method="get">
                 <input type="hidden" name="limit" value="<?php echo $_GET['limit']; ?>">
-                <button type="submit" name="offset" 
-                    value="<?php echo getPrevPageOffset($_GET['limit'], $_GET['offset']); ?>" 
+                <button type="submit" name="offset"
+                    value="<?php echo getPrevPageOffset($_GET['limit'], $_GET['offset']); ?>"
                         <?php echo $_GET['offset'] === "0" ? "disabled" : ""; ?> >Prev</button>
                 <span>Page <?php echo floor($_GET['offset'] / $_GET['limit']) + 1; ?> </span>
-                <button type="submit" name="offset" 
-                    value="<?php echo getNextPageOffset($_GET['limit'], $_GET['offset'], $content["_total"]); ?>" 
-                        <?php echo $content["_total"] - $_GET['limit'] == $_GET['offset'] ? "disabled" : ""; ?> >Next</button>
+                <button type="submit" name="offset"
+                    value="<?php echo getNextPageOffset($_GET['limit'], $_GET['offset'], $total); ?>" 
+                        <?php echo $total <= $_GET['offset'] ? "disabled" : ""; ?>>Next</button>
                 <input type="hidden" name="game" value="<?php echo $_GET['game'];?>">
             </form>
             <?php if (isset($get_top_games) && $get_top_games === true) : ?>

@@ -8,6 +8,7 @@ $followed_url = "/streams/followed";
 $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
 $top_games_limit = "10";
+$total = "900";
 
 // Config Options
 
@@ -102,11 +103,11 @@ function getPrevPageOffset($limit, $offset)
 
 function getNextPageOffset($limit, $offset, $total)
 {
-    if ($offset + $limit < $total) {
+    if ($offset + $limit <= $total) {
         return $offset + $limit;
     }
 
-    return $total - $limit;
+    return $total;
 }
 
 // Logic
@@ -138,11 +139,11 @@ if (isset($get_top_games) && $get_top_games === true) {
     $games = getRequest($base_url, $game_url, $client_id, ["limit" => $top_games_limit]);
 }
 
-if (!isset($_GET['limit'])) {
+if (!isset($_GET['limit']) OR $_GET['limit'] === "") {
     $_GET['limit'] = "25";
 }
 
-if (!isset($_GET['offset'])) {
+if (!isset($_GET['offset']) OR $_GET['offset'] === "") {
     $_GET['offset'] = "0";
 }
 
