@@ -118,7 +118,7 @@ if (!isset($_GET["only_followed"])
     && $only_followed_default === true
 ) {
     $_GET["only_followed"] = "1";
-} else if (!isset($_GET["only_followed"]) && !isset($_GET["ofh"])) {
+} else if (!isset($_GET["only_followed"])) {
     $_GET["only_followed"] = "0";
 }
 
