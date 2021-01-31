@@ -28,3 +28,7 @@ $top_games_limit = "10"; (1-100)
 ```
 
 if you wish to change one of the variables in logic.php you can simply override it by placing a variable with the same name in config.php with your desired value.
+
+## Demo
+
+If you would like to try out Twitchlite you can visit the demo site at [https://twitchlite.mwalbeck.org](https://twitchlite.mwalbeck.org)
