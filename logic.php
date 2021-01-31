@@ -55,17 +55,17 @@ function filterParams($params)
                 if (is_numeric($value) && ($value > 0) && ($value < 101)) {
                     $new_params[$param] = $value;
                 }
-                continue;
+                continue 2;
             case "offset":
                 if (is_numeric($value) && $value >= 0) {
                     $new_params[$param] = $value;
                 }
-                continue;
+                continue 2;
             case "game":
                 $new_params[$param] = urlencode($value);
-                continue;
+                continue 2;
             default:
-                continue;
+                continue 2;
         }
     }
     return $new_params;
