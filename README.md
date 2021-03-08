@@ -14,6 +14,10 @@ You can also view livestreams from the channels you follow by providing a oauth 
 
 If you're in need of an oauth token you can check out https://twitchtokengenerator.com/.
 
+## Installation
+
+You can either clone the repo and set it up just as you would any other PHP site or you can have a look at the php-fpm based docker container https://hub.docker.com/r/mwalbeck/twitchlite
+
 ## Config
 
 For easy configuration place a config.php file in the root directory. Below you can see the available options. The assigned value is the default and in parentheses you can see the available options.
