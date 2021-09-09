@@ -61,6 +61,9 @@ function filterParams($params)
                     $new_params["game_id"] = $value;
                 }
                 continue 2;
+            case "user_id":
+                $new_params["user_id"] = $value;
+                continue 2;
             default:
                 continue 2;
         }
@@ -105,6 +108,7 @@ if (!isset($_GET['limit']) && isset($default_limit)) {
 }
 
 if ($_GET["only_followed"] === "1") {
+    $_GET["user_id"] = $user_id;
     $content = getRequest(
         $base_url,
         $followed_url,

@@ -39,7 +39,7 @@ require 'logic.php';
         <div id="content">
             <div class="container">
                 <?php foreach ($content["data"] as $stream) : ?>
-                    <?php if (isset($_GET['only_followed']) && isset($_GET['only_followed']) && !empty($_GET['game']) && strtolower($_GET['game']) !== strtolower($stream["game"])) {
+                    <?php if (isset($_GET['only_followed']) && !empty($_GET['game']) && $_GET['game'] !== $stream["game_id"]) {
     continue;
 } ?>
                     <div class="stream">
