@@ -1,6 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #222;
-    color: #FFF
+    color: #FFF;
+}
+
+nav {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+form {
+    margin: 0;
+}
+
+.input {
+    display: flex;
+    justify-self: start;
+    flex-wrap: wrap;
+}
+
+.input input {
+    margin: 0 0.5em;
+}
+
+.input-prev-next {
+    display: flex;
+    justify-self: end;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.stream {
+    padding: 1em;
+    flex: 1 1 22em;
 }
 
 a,
@@ -8,34 +46,6 @@ a:visited {
     color: #625cff;
 }
 
-.nav {
-    display: inline-block;
+a img {
     width: 100%;
-}
-
-.input {
-    float: left;
-}
-
-.input-prev-next {
-    float: right;
-    padding: 0 1em;
-}
-
-.stream {
-    padding: 1em;
-    margin-bottom: 0em;
-    float: left;
-    display: block;
-    width: 320px;
-    height: 320px;
-}
-
-.total {
-    float: right;
-    padding-top: 0.4em;
-}
-
-.status-split {
-    margin: 4px 0;
 }

@@ -7,12 +7,15 @@ require 'logic.php';
         <title>twitchLite</title>
     </header>
     <body>
-        <div class="nav">
+        <nav>
             <form class="input" method="get">
-                Limit (1-100): <input type="number" min="1" max="100" value="<?php echo $_GET['limit']; ?>" name="limit">
-                Game: <input type="text" autocomplete="on" name="game" value="<?php echo $_GET['game']; ?>" list="games">
+                <label for="limit">Limit (1-100):</label>
+                <input id="limit" type="number" min="1" max="100" value="<?php echo $_GET['limit']; ?>" name="limit">
+                <label for="game">Game:</label>
+                <input id="game" type="text" autocomplete="on" name="game" value="<?php echo $_GET['game']; ?>" list="games">
                 <?php if (isset($oauth_token) && !empty($oauth_token)) : ?>
-                    Only followed: <input type="checkbox" name="only_followed" value="1" 
+                    <label for="only_followed">Only followed:</label>
+                    <input id="only_followed" type="checkbox" name="only_followed" value="1" 
                         <?php echo $_GET['only_followed'] === "1" ? "checked" : ""; ?> >
                     <input type="hidden" name="ofh" value="0">
                 <?php endif; ?>
@@ -32,7 +35,7 @@ require 'logic.php';
                     <?php endforeach; ?>
                 </datalist>
             <?php endif; ?>
-        </div>
+        </nav>
         <div id="content">
             <div class="container">
                 <?php foreach ($content["data"] as $stream) : ?>
