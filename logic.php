@@ -7,7 +7,7 @@ $stream_url = "/streams";
 $followed_url = "/streams/followed";
 $game_url = "/games/top";
 $client_id = "tfdaga4350ved4acxim5958z1qcr8y";
-$top_games_limit = "10";
+$top_games_limit = "100";
 $total = "900";
 
 // Config Options
