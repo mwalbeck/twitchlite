@@ -64,6 +64,9 @@ function filterParams($params)
             case "user_id":
                 $new_params["user_id"] = $value;
                 continue 2;
+            case "after":
+                $new_params["after"] = $value;
+                continue 2;
             default:
                 continue 2;
         }

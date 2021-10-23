@@ -23,8 +23,8 @@ require 'logic.php';
             </form>
             <form class="input-prev-next" method="get">
                 <input type="hidden" name="limit" value="<?php echo $_GET['limit']; ?>">
-                <button type="submit" name="offset" value="">Prev</button>
-                <button type="submit" name="offset" value="">Next</button>
+                <button type="submit" name="" value="">To begining</button>
+                <button type="submit" name="after" value="<?php echo array_key_exists("pagination", $content) ? $content["pagination"]["cursor"] : ""; ?>">Next</button>
                 <input type="hidden" name="game" value="<?php echo $_GET['game']; ?>">
                 <input type="hidden" name="only_followed" value="<?php echo $_GET['only_followed'] ? "1" : "0"; ?>">
             </form>
