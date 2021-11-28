@@ -10,7 +10,7 @@ Default limit is 25 livestreams sorted after the most popular. Limit can go up t
 
 You can also choose livestreams playing a specific game. There is an option to pull the most popular games for autocompletion. This is enabled by default, but can be disabled in the config.php. The default amount of games is pulled is 100, but can customized in config.php.
 
-You can also view livestreams from the channels you follow by providing a oauth token. After you do, a "Only followed" checkbox will appear in the top, where you then can submit a query to only see the channels you follow. There is an option you can add to config.php to have this view as the default view.
+With the new helix api you need to provide an oauth token before you can get any streams. If you also provide your user ID you can also get a list of live channels that you're following. After you provide the user ID a "Only followed" checkbox will appear in the top, where you then can submit a query to only see the channels you follow. There is an option you can add to config.php to have this view as the default view.
 
 ## Installation
 
