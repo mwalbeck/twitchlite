@@ -13,7 +13,7 @@ require 'logic.php';
                 <input id="limit" type="number" min="1" max="100" value="<?php echo $_GET['limit']; ?>" name="limit">
                 <label for="game">Game:</label>
                 <input id="game" type="text" autocomplete="off" name="game" value="<?php echo $_GET['game']; ?>" list="games">
-                <?php if (isset($oauth_token) && !empty($oauth_token)) : ?>
+                <?php if (isset($user_id) && !empty($user_id)) : ?>
                     <label for="only_followed">Only followed:</label>
                     <input id="only_followed" type="checkbox" name="only_followed" value="1" 
                         <?php echo $_GET['only_followed'] === "1" ? "checked" : ""; ?> >
